@@ -1,0 +1,30 @@
+Express Rest API Packages
+1. Express
+2. Body-parser
+3. cookie-parser
+4. Multer: This is a node.js middleware for handling multipart/form-data.
+5. Jsonwebtoken
+6. MySQL driver
+7. Mongo dB Driver
+8. Dotenv
+9. Express-mongo-limit
+10. Express-rate-limit
+11. Helmet
+12. HPP
+13. Validator
+14. Xss-clean
+
+
+##Project Features
+1. User Registration -pc
+2. User Login
+3. User Auth By JWT token
+4. User Profile Read -pc
+6. User Profile Update -pc
+7. User To-do List Create
+8. User To-do List Update
+9. User To-do List Delete
+10. User To-do List Read
+11. User To-do List Complete/Cancel Mark
+12. User To-do List Complete/Cancel Filter
+13. User To-do List Date Filter
