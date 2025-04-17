@@ -14,3 +14,34 @@ const cors =require('cors');
 
 //Database Library Import 
 const mongoose =require('mongoose')
+
+//Implement Security Middleware
+
+app.use(cors())
+app.use(helmet())
+app.use(mongoSanitize())
+app.use(xss())
+app.use(hpp())
+//Implement Body Parser Middleware to work with json
+app.use(bodyParser.json())
+//Set Request rate Limit
+const Limiter = rateLimit({windowMs:15*60*1000,max:3000})
+app.use(Limiter)
+
+//Mongo Db database Connection
+let URL ="mongodb://127.0.0.1:27017/Todo";
+let OPTION={user:'',pass:''}
+mongoose.connect(URL,OPTION,(error)=>{
+    console.log("Connection Success")
+    console.log(error)
+})
+
+//routing implement
+app.use("/api/v1",router)
+
+//undefined route implement
+app.use("*",(req,res)=>{
+    res.status(404).json({status:"fail",data:"Not Found"})
+})
+
+module.exports = app;
