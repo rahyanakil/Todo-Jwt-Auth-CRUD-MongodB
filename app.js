@@ -14,6 +14,7 @@ const cors =require('cors');
 
 //Database Library Import 
 const mongoose =require('mongoose')
+mongoose.set('strictQuery', true); // Add this line
 
 //Implement Security Middleware
 
@@ -29,15 +30,20 @@ const Limiter = rateLimit({windowMs:15*60*1000,max:3000})
 app.use(Limiter)
 
 //Mongo Db database Connection
-let URL ="mongodb://127.0.0.1:27017/";
-let OPTION={user:'',pass:''}
-mongoose.connect(URL, OPTION)
-  .then(() => {
-    console.log("✅ MongoDB connection successful");
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB connection error:", err);
-  });
+let URL ="mongodb://127.0.0.1:27017/Todo";
+let OPTION={user:'',pass:""}
+mongoose.connect(URL,OPTION,(error)=>{
+  console.log("Connection Success");
+  console.log(error)
+})
+
+// mongoose.connect(URL, OPTION)
+//   .then(() => {
+//     console.log("✅ MongoDB connection successful");
+//   })
+//   .catch((err) => {
+//     console.error("❌ MongoDB connection error:", err);
+//   });
 
 
 //routing implement
