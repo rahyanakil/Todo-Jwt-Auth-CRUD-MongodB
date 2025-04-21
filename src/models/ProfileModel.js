@@ -6,8 +6,8 @@ const DataSchema = mongoose.Schema(
     EmailAddress: { type: String },
     MobileNumber: { type: String, unique: true },
     City: { type: String },
-    UserName: { type: String },
-    Password: { type: String },
+    UserName: { type: String,unique:true },
+    Password: { type: String,unique:true },
   },
   { versionKey: false }
 );
