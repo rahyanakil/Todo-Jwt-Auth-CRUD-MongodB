@@ -16,12 +16,13 @@ Express Rest API Packages
 
 
 ##Project Features
+-------ProfileController/Profile Model-------------
 1. User Registration -Profile Controler#pc
 2. User Login -Login Controller
 3. User Auth By JWT token -AuthVerifyMiddleware
 4. User Profile Read -pc
 6. User Profile Update -pc
----------ToDoListController-------------
+---------ToDoListController/TodoModel-------------
 7. User To-do List Create
 8. User To-do List Update
 9. User To-do List Delete
