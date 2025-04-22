@@ -18,6 +18,9 @@ router.post(
   ProfileController.UpdateProfile
 );
 //todo list
+//create to do
 router.post("/CreateToDo", AuthVerifyMiddleware, ToDoListController.CreateToDo);
-
+//select todo 
+router.get("/SelectToDo",AuthVerifyMiddleware,ToDoListController.SelectToDo)
+//update to do 
 module.exports = router;

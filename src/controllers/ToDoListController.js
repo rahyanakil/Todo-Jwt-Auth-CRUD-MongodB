@@ -25,3 +25,35 @@ exports.CreateToDo = (req, res) => {
     }
   });
 };
+
+
+//select Todo
+exports.SelectToDo = (req, res) => {
+  let UserName = req.headers["username"];
+
+  ToDoListModel.find({ UserName: UserName }, (err, data) => {
+    if (err) {
+      res.status(400).json({ status: "fail", data: err });
+    } else {
+      res.status(200).json({ status: "success", data: data });
+    }
+  });
+};
+
+//update profile
+exports.UpdateToDo = (req, res) => {
+  let UserName = req.headers["username"];
+  let reqBody = req.body;
+  ToDoListModel.findOneAndUpdate(
+    { UserName: UserName },
+    reqBody,
+    { new: true },
+    (err, data) => {
+      if (err) {
+        res.status(400).json({ status: "fail", data: err });
+      } else {
+        res.status(200).json({ status: "success", data: data });
+      }
+    }
+  );
+};
