@@ -102,3 +102,48 @@ exports.UpdateStatusToDo =(req,res)=>{
   })
 
 }
+//Delete todo status
+exports.RemoveToDo =(req,res)=>{
+  let reqBody =req.body;
+  let _id =reqBody['_id']
+
+ 
+  ToDoListModel.remove({_id:_id},(err,data)=>{
+    if(err){
+      res.status(400).json({status:"fail",data:err})
+    }
+    else{
+      res.status(200).json({status:"success",data:data})
+    }
+  })
+
+}
+//Filtering by Status
+exports.SelectToDoByStatus = (req, res) => {
+  let UserName = req.headers["username"];
+  let TodoStatus =req.body["TodoStatus"]
+
+  ToDoListModel.find({ UserName: UserName,TodoStatus:TodoStatus }, (err, data) => {
+    if (err) {
+      res.status(400).json({ status: "fail", data: err });
+    } else {
+      res.status(200).json({ status: "success", data: data });
+    }
+  });
+};
+
+//Filtering by Date
+exports.SelectToDoByDate = (req, res) => {
+  let UserName = req.headers["username"];
+  let FormDate =req.body["FormDate"]
+  let ToDate =req.body["ToDate"]
+
+  ToDoListModel.find({ UserName: UserName,TodoCreateDate:{$gte:new Date(FormDate),$lte:new Date(ToDate)} }, (err, data) => {
+    if (err) {
+      res.status(400).json({ status: "fail", data: err });
+    } else {
+      res.status(200).json({ status: "success", data: data });
+    }
+  });
+};
+
